@@ -1,23 +1,23 @@
 
-Backend Aranceles Argentina — Versión automática (Render Free)
+✅ Backend Aranceles Argentina — Versión FINAL para Render Free
 Fecha: 2025-10-27
 
-✅ Totalmente lista para Render sin shell ni comandos manuales.
-- Crea tablas y datos al visitar /api/admin/init
-- Sin tsx, sin dependencias de desarrollo faltantes
-- Funciona con Node 22.x y Prisma 5.22+
+Esta versión ya está compilada (JavaScript puro) y no necesita build en Render.
 
-Instrucciones:
-1. Subí este ZIP a GitHub.
-2. En Render:
-   Build Command: npm install && npm run prisma:generate && npm run prisma:push && npm run build
-   Start Command: npm run start
-3. Variables de entorno:
-   DATABASE_URL, FRONTEND_ORIGIN, (opcional GEMINI_API_KEY)
-4. Esperá a que Render diga "Build successful".
-5. Entrá en:
+🚀 Configuración Render:
+- Build Command: npm install
+- Start Command: node dist/index.js
+- Env Vars: DATABASE_URL, FRONTEND_ORIGIN, GEMINI_API_KEY (opcional)
+
+Pasos:
+1. Subí los archivos de este ZIP a tu repositorio (reemplazando los anteriores).
+2. En Render, verificá los comandos anteriores.
+3. Deploy manual → Clear build cache & deploy
+4. Cuando diga "Build successful", abrí en el navegador:
    https://TU-BACKEND.onrender.com/api/admin/init
-   → Verás "✅ Base inicializada con éxito"
-6. Listo para usar:
-   /api/health
-   /api/aranceles/search (por implementar en frontend)
+   → Aparecerá "✅ Base inicializada con éxito"
+5. Probá:
+   https://TU-BACKEND.onrender.com/api/health
+   → Debería mostrar algo como: { "ok": true, "ts": "..." }
+
+Listo para usar con tu frontend.
