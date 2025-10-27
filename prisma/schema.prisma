@@ -1,0 +1,43 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+model NCM {
+  id           String   @id @default(cuid())
+  code         String   @unique
+  description  String
+  section      String?
+  chapter      String?
+  heading      String?
+  subheading   String?
+  unit         String?
+  adValorem    Float?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  notes        Note[]
+}
+enum NoteType {
+  section
+  chapter
+  heading
+  general
+  gri
+  resolution
+  nota_explicativa
+}
+model Note {
+  id          String   @id @default(cuid())
+  type        NoteType
+  targetCode  String?
+  title       String?
+  text        String
+  sourceUrl   String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  ncm         NCM?     @relation(fields: [ncmId], references: [id])
+  ncmId       String?
+}
